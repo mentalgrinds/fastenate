@@ -51,9 +51,41 @@ h1, h2, h3 {
   font: 16px 'Oswald', sans-serif; }
 
 header {
-  background: white; }
+  position: relative;
+  background: white;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5); }
+  header .logo {
+    float: left;
+    background: url(../assets/logo.svg) no-repeat;
+    background-position: cover;
+    height: 61px;
+    width: 120px;
+    margin: 4px 0 0 8px; }
+  header h1 {
+    visibility: hidden; }
   header .add-panel {
-    float: right; }
+    float: right;
+    position: relative;
+    height: 30px;
+    width: 30px;
+    border: 2px solid #EF6D44;
+    margin: 17px 20px 17px; }
+    header .add-panel:before {
+      content: " ";
+      position: absolute;
+      top: 11px;
+      left: 4px;
+      width: 18px;
+      height: 1px;
+      border-top: 3px solid #A6301D; }
+    header .add-panel:after {
+      content: " ";
+      position: absolute;
+      top: 4px;
+      left: 11px;
+      width: 1px;
+      height: 18px;
+      border-left: 3px solid #A6301D; }
 
 nav {
   margin: auto;
@@ -64,17 +96,29 @@ nav {
     max-width: 500px;
     margin: auto; }
     nav ul li {
+      position: relative;
       display: inline-block;
       width: 32%;
       border-left: 1px solid #717175; }
       nav ul li:first-child {
         border-left: none; }
+      @media (min-width: 715px) {
+        nav ul li {
+          border-left: none; }
+        nav ul li:before {
+          position: absolute;
+          content: "\2022";
+          color: #717175;
+          left: -4px;
+          top: 0.7rem; }
+        nav ul li:first-child:before {
+          content: " "; } }
       nav ul li a {
         display: block;
         color: #717175;
         text-decoration: none;
         text-transform: uppercase;
-        font: 16px 'Oswald', sans-serif;
+        font: 1.0625rem 'Oswald', sans-serif;
         line-height: 2.6; }
 
 .container {
