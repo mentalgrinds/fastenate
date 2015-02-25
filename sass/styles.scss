@@ -1,5 +1,151 @@
-body {
-  h1 {
-    background-color: #fff;
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+@import url(http://fonts.googleapis.com/css?family=Lato);
+@import "partials/_resets";
+@import "partials/_clearfix";
+
+
+// Variables
+
+$base_font_size: 16px;
+$light_grey: #717175;
+$dark_grey: #2C2C2E;
+$gutter: 10px;
+
+$screen: "screen and ";
+$breakpoints: (
+  'medium': (min-width: 715px),
+  'large': (min-width: 930px),
+);
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  } @else {
+    @error 'No value found for `#{$breakpoint}`. '
+         + 'Please make sure it is defined in `$breakpoints` map.'
   }
 }
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Lato', sans-serif;
+  font-size: $base_font_size;
+}
+
+body {
+  background: url(../assets/bg.jpg);
+}
+
+h1, h2, h3 {
+  font: $base_font_size 'Oswald', sans-serif;
+}
+
+header {
+  background: white;
+
+  .add-panel {
+    float: right;
+  }
+
+
+}
+
+nav {
+  margin: auto;
+  text-align: center;
+  background: $dark_grey;
+  
+  ul {
+    list-style: none;
+    max-width: 500px;
+    margin: auto;
+
+    li {
+      display: inline-block;
+      width: 32%;
+      border-left: 1px solid $light_grey;
+
+      &:first-child {
+        border-left: none;
+      }
+
+      a {
+        display: block;
+        color: $light_grey;
+        text-decoration: none;
+        text-transform: uppercase;
+        font: $base_font_size 'Oswald', sans-serif;
+        line-height: 2.6;
+
+      }
+    }
+  }
+}
+
+.container {
+  margin: auto;
+  width: 470px;
+
+  @include respond-to('medium') {
+    width: 715px;
+  }
+
+
+}
+
+.grid {
+  margin: 0 0 $gutter 0;
+  
+  &:after {
+    /* Or @extend clearfix */
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+[class*='col-'] {
+  float: left;
+  padding-right: $gutter;
+  .grid &:last-of-type {
+    padding-right: 0;
+  }
+}
+
+.col-1-2 {
+  width: auto;
+
+  @include respond-to('medium') {
+    width: 50%
+  }
+}
+
+/* Opt-in outside padding */
+.grid-gutter {
+  padding: $gutter 0 $gutter $gutter;
+  [class*='col-']:last-of-type {
+    padding-right: $gutter;
+  }
+}
+
+.panel {
+  max-width: 450px;
+  background: white;
+  padding: 25px 20px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 10px 2px rgba(0,0,0,0.5);
+
+  img {
+    width: 100%;
+  }
+
+
+}
+
+// 10 + 20 + 410 + 20 + 10 + 20 + 410 + 20 + 10
+// 25 + 320 + 25 + 320 + 25
