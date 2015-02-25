@@ -55,12 +55,22 @@ header {
   background: white;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5); }
   header .logo {
-    float: left;
-    background: url(../assets/logo.svg) no-repeat;
-    background-position: cover;
-    height: 61px;
+    position: relative;
+    background: url(../assets/logo.svg) no-repeat left 4px;
+    height: 65px;
     width: 120px;
-    margin: 4px 0 0 8px; }
+    margin: 0 0 0 8px; }
+    @media (min-width: 715px) {
+      header .logo {
+        margin: auto; }
+        header .logo:before {
+          content: " ";
+          position: absolute;
+          background: url(../assets/header_bg.svg) no-repeat;
+          top: 27px;
+          left: -146px;
+          width: 410px;
+          height: 10px; } }
   header h1 {
     visibility: hidden; }
   header .add-panel {
@@ -105,14 +115,14 @@ nav {
       @media (min-width: 715px) {
         nav ul li {
           border-left: none; }
-        nav ul li:before {
-          position: absolute;
-          content: "\2022";
-          color: #717175;
-          left: -4px;
-          top: 0.7rem; }
-        nav ul li:first-child:before {
-          content: " "; } }
+          nav ul li:before {
+            position: absolute;
+            content: "\2022";
+            color: #717175;
+            left: -4px;
+            top: 0.7rem; }
+          nav ul li:first-child:before {
+            content: " "; } }
       nav ul li a {
         display: block;
         color: #717175;
@@ -129,7 +139,7 @@ nav {
       width: 715px; } }
 
 .grid {
-  margin: 0 0 10px 0; }
+  margin: 0; }
   .grid:after {
     /* Or @extend clearfix */
     content: "";
@@ -144,21 +154,45 @@ nav {
 
 .col-1-2 {
   width: auto; }
+  .col-1-2:nth-child(2n+1) {
+    clear: left; }
   @media (min-width: 715px) {
     .col-1-2 {
       width: 50%; } }
 
 /* Opt-in outside padding */
 .grid-gutter {
-  padding: 10px 0 10px 10px; }
+  padding: 10px 0 0 10px; }
   .grid-gutter [class*='col-']:last-of-type {
     padding-right: 10px; }
 
 .panel {
   max-width: 450px;
   background: white;
-  padding: 25px 20px;
-  margin-bottom: 10px;
+  padding: 25px 20px 20px;
+  margin-bottom: 12px;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5); }
   .panel img {
     width: 100%; }
+  .panel h2 {
+    font-size: 1.625rem;
+    line-height: 1.2;
+    padding: 12px 0 8px;
+    color: #2C2C2E; }
+  .panel .panel-details {
+    margin-bottom: 20px; }
+    .panel .panel-details span {
+      color: #717175;
+      font-size: 1.0625rem;
+      padding-right: 10px; }
+      .panel .panel-details span:before {
+        position: relative;
+        content: "\2022";
+        color: #717175;
+        left: -5px; }
+      .panel .panel-details span:first-child:before {
+        content: " "; }
+  .panel p {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    color: #2C2C2E; }

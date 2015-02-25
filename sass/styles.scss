@@ -55,13 +55,26 @@ header {
   box-shadow: 0 0 10px 2px rgba(0,0,0,0.5);
 
   .logo {
-    float: left;
-    background: url(../assets/logo.svg) no-repeat;
-    background-position: cover;
-    height: 61px;
+    position: relative;
+    background: url(../assets/logo.svg) no-repeat left 4px;
+    height: 65px;
     width: 120px;
-    margin: 4px 0 0 8px;
+    margin: 0 0 0 8px;
 
+    @include respond-to('medium') {
+      margin: auto;
+
+      &:before {
+        content: " ";
+        position: absolute;
+        background: url(../assets/header_bg.svg) no-repeat;
+        top: 27px;
+        left: -146px;
+        width: 410px;
+        height: 10px;
+
+      }
+    }
   }
   
   h1 {
@@ -123,9 +136,7 @@ nav {
         
       @include respond-to('medium') {
 
-        & {
-          border-left: none;
-        }
+        border-left: none;
 
         &:before {
           position: absolute;
@@ -165,7 +176,7 @@ nav {
 }
 
 .grid {
-  margin: 0 0 $gutter 0;
+  margin: 0;
   
   &:after {
     /* Or @extend clearfix */
@@ -186,14 +197,19 @@ nav {
 .col-1-2 {
   width: auto;
 
+  &:nth-child(2n+1) {
+    clear: left;
+  }
+
   @include respond-to('medium') {
     width: 50%
+
   }
 }
 
 /* Opt-in outside padding */
 .grid-gutter {
-  padding: $gutter 0 $gutter $gutter;
+  padding: $gutter 0 0 $gutter;
   [class*='col-']:last-of-type {
     padding-right: $gutter;
   }
@@ -202,14 +218,48 @@ nav {
 .panel {
   max-width: 450px;
   background: white;
-  padding: 25px 20px;
-  margin-bottom: 10px;
+  padding: 25px 20px 20px;
+  margin-bottom: 12px;
   box-shadow: 0 0 10px 2px rgba(0,0,0,0.5);
 
   img {
     width: 100%;
   }
 
+  h2 {
+    font-size: 1.625rem;
+    line-height: 1.2;
+    padding: 12px 0 8px;
+    color: $dark_grey;
+  }
+
+  .panel-details {
+    margin-bottom: 20px;
+
+    span {
+      color: $light_grey;
+      font-size: $base_slight_larger;
+      padding-right: 10px;
+
+      &:before {
+        position: relative;
+        content: "\2022";
+        color: $light_grey;
+        left: -5px;
+        
+      }
+
+      &:first-child:before {
+        content: " ";
+      }
+    }
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.2;
+    color: $dark_grey;
+  }
 
 }
 
