@@ -17,6 +17,7 @@ $gutter: 10px;
 
 $screen: "screen and ";
 $breakpoints: (
+  'small': (min-width: 500px),
   'medium': (min-width: 715px),
   'large': (min-width: 930px),
 );
@@ -127,22 +128,26 @@ nav {
       position: relative;
       display: inline-block;
       width: 32%;
+      padding: 0 25px;
       border-left: 1px solid $light_grey;
 
       &:first-child {
         border-left: none;
       }
+      
+      @include respond-to('small') {
+        width: auto;
+      }
 
-        
       @include respond-to('medium') {
-
+        padding: 0 9px;
         border-left: none;
 
         &:before {
           position: absolute;
           content: "\2022";
           color: $light_grey;
-          left: -4px;
+          left: -6px;
           top: 0.7rem;
         }
 
@@ -170,6 +175,7 @@ nav {
 
   @include respond-to('medium') {
     width: 715px;
+    margin-top: 32px;
   }
 
 
@@ -188,7 +194,14 @@ nav {
 
 [class*='col-'] {
   float: left;
-  padding-right: $gutter;
+
+  padding: 0 $gutter 12px 0;
+  // padding-right: $gutter;
+
+  @include respond-to('medium') {
+    padding: 0 25px 25px 0;
+    // padding-right: 25px;
+  }
   .grid &:last-of-type {
     padding-right: 0;
   }
@@ -212,6 +225,10 @@ nav {
   padding: $gutter 0 0 $gutter;
   [class*='col-']:last-of-type {
     padding-right: $gutter;
+
+    @include respond-to('medium') {
+      padding-right: 25px;
+    }
   }
 }
 
@@ -219,7 +236,7 @@ nav {
   max-width: 450px;
   background: white;
   padding: 25px 20px 20px;
-  margin-bottom: 12px;
+  // margin-bottom: 12px;
   box-shadow: 0 0 10px 2px rgba(0,0,0,0.5);
 
   img {
@@ -231,6 +248,10 @@ nav {
     line-height: 1.2;
     padding: 12px 0 8px;
     color: $dark_grey;
+
+    @include respond-to('medium') {
+      font-size: 1.25rem;
+    }
   }
 
   .panel-details {
@@ -252,6 +273,9 @@ nav {
       &:first-child:before {
         content: " ";
       }
+      @include respond-to('medium') {
+        font-size: 0.9rem;
+      }
     }
   }
 
@@ -259,6 +283,10 @@ nav {
     font-size: 1.1rem;
     line-height: 1.2;
     color: $dark_grey;
+
+    @include respond-to('medium') {
+      font-size: 0.9rem;
+    }
   }
 
 }
