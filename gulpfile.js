@@ -17,7 +17,7 @@ gulp.task('watch-files', function (){
 gulp.task('compile-sass', function (){
   return gulp
           .src(PathTo.SassFiles, ['compile-sass'])
-          .pipe(sass())
+          .pipe(sass({errLogToConsole: true}))
           .pipe(gulp.dest(PathTo.PublicCss))
           .pipe(connect.reload());
 

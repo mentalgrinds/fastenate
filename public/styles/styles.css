@@ -50,6 +50,7 @@ body {
 h1, h2, h3 {
   font: 16px 'Oswald', sans-serif; }
 
+/* Header styles */
 header {
   position: relative;
   background: white;
@@ -60,7 +61,7 @@ header {
     height: 65px;
     width: 120px;
     margin: 0 0 0 8px; }
-    @media (min-width: 715px) {
+    @media screen and (min-width: 715px) {
       header .logo {
         margin: auto; }
         header .logo:before {
@@ -97,6 +98,7 @@ header {
       height: 18px;
       border-left: 3px solid #A6301D; }
 
+/* Navigation styles */
 nav {
   margin: auto;
   text-align: center;
@@ -113,10 +115,10 @@ nav {
       border-left: 1px solid #717175; }
       nav ul li:first-child {
         border-left: none; }
-      @media (min-width: 500px) {
+      @media screen and (min-width: 500px) {
         nav ul li {
           width: auto; } }
-      @media (min-width: 715px) {
+      @media screen and (min-width: 715px) {
         nav ul li {
           padding: 0 9px;
           border-left: none; }
@@ -136,10 +138,11 @@ nav {
         font: 1.0625rem 'Oswald', sans-serif;
         line-height: 2.6; }
 
+/* Grid styles */
 .container {
   margin: auto;
   width: 470px; }
-  @media (min-width: 715px) {
+  @media screen and (min-width: 715px) {
     .container {
       width: 715px;
       margin-top: 32px; } }
@@ -147,7 +150,6 @@ nav {
 .grid {
   margin: 0; }
   .grid:after {
-    /* Or @extend clearfix */
     content: "";
     display: table;
     clear: both; }
@@ -155,7 +157,7 @@ nav {
 [class*='col-'] {
   float: left;
   padding: 0 10px 12px 0; }
-  @media (min-width: 715px) {
+  @media screen and (min-width: 715px) {
     [class*='col-'] {
       padding: 0 25px 25px 0; } }
   .grid [class*='col-']:last-of-type {
@@ -165,7 +167,7 @@ nav {
   width: auto; }
   .col-1-2:nth-child(2n+1) {
     clear: left; }
-  @media (min-width: 715px) {
+  @media screen and (min-width: 715px) {
     .col-1-2 {
       width: 50%; } }
 
@@ -174,23 +176,31 @@ nav {
   padding: 10px 0 0 10px; }
   .grid-gutter [class*='col-']:last-of-type {
     padding-right: 10px; }
-    @media (min-width: 715px) {
+    @media screen and (min-width: 715px) {
       .grid-gutter [class*='col-']:last-of-type {
         padding-right: 25px; } }
 
+/* Panel content styles */
 .panel {
   max-width: 450px;
   background: white;
   padding: 25px 20px 20px;
   box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.5); }
-  .panel img {
-    width: 100%; }
+  .panel .image {
+    width: 100%;
+    height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #717175; }
+    @media screen and (min-width: 715px) {
+      .panel .image {
+        height: 175px; } }
   .panel h2 {
     font-size: 1.625rem;
     line-height: 1.2;
     padding: 12px 0 8px;
     color: #2C2C2E; }
-    @media (min-width: 715px) {
+    @media screen and (min-width: 715px) {
       .panel h2 {
         font-size: 1.25rem; } }
   .panel .panel-details {
@@ -206,13 +216,13 @@ nav {
         left: -5px; }
       .panel .panel-details span:first-child:before {
         content: " "; }
-      @media (min-width: 715px) {
+      @media screen and (min-width: 715px) {
         .panel .panel-details span {
           font-size: 0.9rem; } }
   .panel p {
     font-size: 1.1rem;
     line-height: 1.2;
     color: #2C2C2E; }
-    @media (min-width: 715px) {
+    @media screen and (min-width: 715px) {
       .panel p {
         font-size: 0.9rem; } }
